@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_21",
+  "package": "com.yourname.ripples_addon.mixin",
+  "refmap": "mixins.ripples_addon.refmap.json",
+  "minVersion": "0.8.5",
+  "mixins": []
+}
