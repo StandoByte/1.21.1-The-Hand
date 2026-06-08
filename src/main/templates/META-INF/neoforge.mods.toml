@@ -6,12 +6,12 @@ license="GNU GPL v3.0"
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
-authors="Your Name"
+authors="Makuta Zeml"
 credits='''
     StandoByte - creator of the ROTP
 '''
 description='''
-    An addon thats adds *...* for the Ripples of the Past mod.
+    An addon thats adds Za Hando for the Ripples of the Past mod.
 '''
 
 [[mixins]]
