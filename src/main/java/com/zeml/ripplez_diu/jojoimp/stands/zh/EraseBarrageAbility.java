@@ -9,6 +9,7 @@ import com.github.standobyte.jojo.powersystem.ability.AbilityId;
 import com.github.standobyte.jojo.powersystem.ability.AbilityType;
 import com.github.standobyte.jojo.powersystem.ability.AbilityUsageGroup;
 import com.github.standobyte.jojo.powersystem.ability.condition.AvailableAbilities;
+import com.github.standobyte.jojo.powersystem.entityaction.ActionOBB;
 import com.github.standobyte.jojo.powersystem.entityaction.ActionPhase;
 import com.github.standobyte.jojo.powersystem.entityaction.EntityActionInstance;
 import com.github.standobyte.jojo.powersystem.entityaction.type.EntityActionType;
@@ -18,10 +19,12 @@ import com.github.standobyte.jojo.powersystem.standpower.entity.StandEntity;
 import com.github.standobyte.jojo.powersystem.standpower.entity.StandEntityAbility;
 import com.github.standobyte.jojo.powersystem.standpower.entity.StandStatFormulas;
 import com.github.standobyte.jojo.subsystems.entity_grab.LivingComponentGrab;
+import com.github.standobyte.jojo.subsystems.hitboxes.ExtendableOBB;
 import com.github.standobyte.jojo.subsystems.hitboxes.OBBCollisionUtil;
 import com.github.standobyte.jojo.subsystems.hitboxes.OrientedBoundingBox;
 import com.github.standobyte.jojo.subsystems.target.ActionTarget;
 import com.github.standobyte.jojo.util.functions.DamageUtil;
+import com.github.standobyte.jojo.util.functions.MathUtil;
 import com.github.standobyte.jojoimpl.stands._entitybase.StandEntityBarrageAbility;
 import com.zeml.ripplez_diu.RipplesAddon;
 import com.zeml.ripplez_diu.init.AddonDamageTypes;
@@ -38,10 +41,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 
 import java.util.List;
 
-public class EraseBarrageAbility extends StandEntityAbility {
+public class EraseBarrageAbility extends StandEntityBarrageAbility {
 
     public EraseBarrageAbility(AbilityType<?> abilityType, AbilityId abilityId) {
-        super(abilityType, abilityId, EraseBarrage::new);
+        super(abilityType, abilityId);
+        this.createActionObj = EraseBarrage::new;
         usageGroup = AbilityUsageGroup.COMBAT;
         setDefaultPhaseLength(ActionPhase.PERFORM, StandStatFormulas.getBarrageMaxDuration(8));
         setDefaultPhaseLength(ActionPhase.RECOVERY, 10);
@@ -49,43 +53,35 @@ public class EraseBarrageAbility extends StandEntityAbility {
     }
 
 
-    @Override
-    public void initActionFromConfig(EntityActionInstance action, Level level,
-                                     LivingEntity powerUser, LivingEntity performer) {
-        super.initActionFromConfig(action, level, powerUser, performer);
-        if (!level.isClientSide() && performer instanceof StandEntity stand) {
-//			if (powerUser instanceof Player player && player.getAbilities().instabuild) {
-//				action.phasesLength.put(ActionPhase.PERFORM, 999999);
-//				action.phasesLength.put(ActionPhase.RECOVERY, 0);
-//			}
-//			else {
-            action.phasesLength.put(ActionPhase.PERFORM, StandStatFormulas.getBarrageMaxDuration(stand.getDurability()));
-//			}
-        }
-    }
 
 
-    public static class EraseBarrage extends StandEntityBarrageAbility.StandEntityBarrage{
-        private OrientedBoundingBox obb;
+    public static class EraseBarrage extends StandEntityBarrage implements ActionOBB {
+        ExtendableOBB botox;
         public EraseBarrage(EntityActionType ability) {
             super(ability);
         }
 
         @Override
         public void actionPerformStart() {
-            this.obb = new OrientedBoundingBox(performer.position().add(0,performer.getBbHeight()/2,0), 3d, 3d, 3d, getPerformer().getYRot(), getPerformer().getXRot());
+            OrientedBoundingBox obb = new OrientedBoundingBox(new Vec3(0,performer.getBbHeight()/2,0), 3d, 3d, 3d, getPerformer().getYRot(), getPerformer().getXRot());
+            this.botox =  new ExtendableOBB(obb,0,phasesLength.get(ActionPhase.PERFORM).intValue(),phasesLength.get(ActionPhase.PERFORM).intValue(),new Vec3(0, performer.getBbHeight()/2, 0));
         }
 
         @Override
         public void actionPerformEnd() {
-            this.obb = null;
+            this.botox = null;
         }
 
         @Override
         public void actionTick() {
             super.actionTick();
-            if(getPhase() == ActionPhase.PERFORM && obb != null){
-                List<? extends Entity> projectiles = OBBCollisionUtil.getEntitiesInOBB(level(), obb, entity ->  entity instanceof Projectile);
+            if(getPhase() == ActionPhase.PERFORM && this.extendableOBB() != null){
+                this.extendableOBB().tick();
+                Vec3 pos = getPerformer().position();
+                Vec3 offset = new Vec3(0.0, 1.5, 0.2)
+                        .yRot(-getPerformer().yBodyRot * MathUtil.DEG_TO_RAD);
+                this.extendableOBB().updatePosition(level(), pos, offset, getPerformer().getXRot(), getPerformer().getYRot());
+                List<? extends Entity> projectiles = OBBCollisionUtil.getEntitiesInOBB(level(), this.extendableOBB().rotatableHitbox(), entity ->  entity instanceof Projectile);
                 for (Entity projectile: projectiles){
                     if(!level().isClientSide){
                         if(performer instanceof StandEntity stand){
@@ -141,6 +137,11 @@ public class EraseBarrageAbility extends StandEntityAbility {
             float value = (hitsPerTick * curTick) - (int) (hitsPerTick * (curTick - 1));
             value *= 0.5f;
             return value;
+        }
+
+        @Override
+        public ExtendableOBB extendableOBB() {
+            return this.botox;
         }
     }
 

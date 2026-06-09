@@ -124,7 +124,7 @@ public class EraseFinisherAbility extends StandEntityHeavyPunchAbility {
                         }
                     }
 
-                    punchedTarget = target;
+                    //punchedTarget = target;
                     standPower.consumeStamina(50);
                     stand.consumeFinisherMeter(1.0001f);
                 }
