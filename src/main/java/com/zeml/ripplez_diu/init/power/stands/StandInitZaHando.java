@@ -40,6 +40,9 @@ public class StandInitZaHando {
                         })
                         .addAbility("heavy_punch", ModStandAbilities.HEAVY_PUNCH)
                         .addAbility("erasure", AddonStandAbilities.ERASURE)
+                        .addAbility("erase_finisher",AddonStandAbilities.ERASE_FINISHER, punch->{
+                            punch.initIsFinisher();
+                        })
                         .addAbility("erase_space", AddonStandAbilities.ERASE_SPACE)
 
                         .addAbility("barrage", AddonStandAbilities.ERASE_BARRAGE)
@@ -65,7 +68,8 @@ public class StandInitZaHando {
                         .addSkill(StandUnlockableSkill.startingAbility("punch"))
                         .addSkill(StandUnlockableSkill.unlockableAbility("barrage",500).prerequisiteSkill("erasure"))
                         .addSkill(StandUnlockableSkill.startingAbility("heavy_punch"))
-                        .addSkill(StandUnlockableSkill.startingAbility("erase_items"))
+                        .addSkill(StandUnlockableSkill.unlockableAbility("erase_finisher",100).prerequisiteSkill("erasure","erase_items"))
+                        .addSkill(StandUnlockableSkill.unlockableAbility("erase_items",10))
                         .addSkill(StandUnlockableSkill.unlockableAbility("erasure",300))
                         .addSkill(StandUnlockableSkill.unlockableAbility("erase_space",200).prerequisiteSkill("erasure"))
 

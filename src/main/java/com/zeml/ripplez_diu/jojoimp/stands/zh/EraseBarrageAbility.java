@@ -2,16 +2,22 @@ package com.zeml.ripplez_diu.jojoimp.stands.zh;
 
 import com.github.standobyte.jojo.customobjects.DamageSourceModified;
 import com.github.standobyte.jojo.init.ModSoundEvents;
+import com.github.standobyte.jojo.powersystem.Power;
+import com.github.standobyte.jojo.powersystem.PowerClass;
+import com.github.standobyte.jojo.powersystem.ability.Ability;
 import com.github.standobyte.jojo.powersystem.ability.AbilityId;
 import com.github.standobyte.jojo.powersystem.ability.AbilityType;
 import com.github.standobyte.jojo.powersystem.ability.AbilityUsageGroup;
+import com.github.standobyte.jojo.powersystem.ability.condition.AvailableAbilities;
 import com.github.standobyte.jojo.powersystem.entityaction.ActionPhase;
 import com.github.standobyte.jojo.powersystem.entityaction.EntityActionInstance;
 import com.github.standobyte.jojo.powersystem.entityaction.type.EntityActionType;
+import com.github.standobyte.jojo.powersystem.standpower.StandPower;
 import com.github.standobyte.jojo.powersystem.standpower.StandUtil;
 import com.github.standobyte.jojo.powersystem.standpower.entity.StandEntity;
 import com.github.standobyte.jojo.powersystem.standpower.entity.StandEntityAbility;
 import com.github.standobyte.jojo.powersystem.standpower.entity.StandStatFormulas;
+import com.github.standobyte.jojo.subsystems.entity_grab.LivingComponentGrab;
 import com.github.standobyte.jojo.subsystems.hitboxes.OBBCollisionUtil;
 import com.github.standobyte.jojo.subsystems.hitboxes.OrientedBoundingBox;
 import com.github.standobyte.jojo.subsystems.target.ActionTarget;
@@ -80,7 +86,6 @@ public class EraseBarrageAbility extends StandEntityAbility {
             super.actionTick();
             if(getPhase() == ActionPhase.PERFORM && obb != null){
                 List<? extends Entity> projectiles = OBBCollisionUtil.getEntitiesInOBB(level(), obb, entity ->  entity instanceof Projectile);
-                RipplesAddon.getLogger().debug("OBB {} {}", obb.center, projectiles);
                 for (Entity projectile: projectiles){
                     if(!level().isClientSide){
                         if(performer instanceof StandEntity stand){

@@ -70,8 +70,8 @@ public class EraseSpaceAbility extends StandEntityAbility {
         @Override
         public void onActionSet(@Nullable EntityActionInstance prevAction) {
             OrientedBoundingBox obb = new OrientedBoundingBox(new Vec3(0, 1.35, 0), 1d, 1d, 1d, getPerformer().getYRot(), getPerformer().getXRot());
-            this.extendableOBB = new ExtendableOBB(obb, 1.35F, phasesLength.get(ActionPhase.PERFORM).intValue()+phasesLength.get(ActionPhase.RECOVERY).intValue(),
-                    phasesLength.get(ActionPhase.PERFORM).intValue()+phasesLength.get(ActionPhase.RECOVERY).intValue()-5,
+            this.extendableOBB = new ExtendableOBB(obb, 0.28125f, phasesLength.get(ActionPhase.BUTTON_CHARGE).intValue()+phasesLength.get(ActionPhase.PERFORM).intValue(),
+                    phasesLength.get(ActionPhase.PERFORM).intValue(),
                     new Vec3(0, 1.35, 0));
         }
 
