@@ -12,7 +12,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-
+// Run the launch config that starts with "Data_" to generate the damage type tags for your damage types.
 @EventBusSubscriber
 public class AddonDamageTypes {
     public static final TagHelper<DamageType> DAMAGE_TYPES = new TagHelper<>(RipplesAddon.MOD_ID, Registries.DAMAGE_TYPE);
