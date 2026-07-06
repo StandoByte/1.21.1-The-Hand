@@ -34,30 +34,30 @@ neoForge {
     accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
-        client {
+        client_DiU {
             client()
 
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
-        client2_diu {
+        client2_DiU {
             client()
 
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
             programArguments.addAll '--username=Dev2'
         }
 
-        server {
+        server_DiU {
             server()
 
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        gameTestServer {
+        gameTestServer_DiU {
             type = "gameTestServer"
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        data {
+        data_DiU {
             data()
 
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
