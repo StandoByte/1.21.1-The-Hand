@@ -1,4 +1,4 @@
-package com.zeml.ripplez_diu;
+package com.zeml.ripplez_diu.network;
 
 import com.github.standobyte.jojo.PacketsRegister;
 import com.github.standobyte.jojo.PacketsRegister.PacketType;

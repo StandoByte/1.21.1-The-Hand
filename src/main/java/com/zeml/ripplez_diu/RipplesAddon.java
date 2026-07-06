@@ -5,6 +5,8 @@ import com.zeml.ripplez_diu.init.*;
 import com.zeml.ripplez_diu.init.power.AddonPlayerPowers;
 import com.zeml.ripplez_diu.init.power.AddonStandAbilities;
 import com.zeml.ripplez_diu.init.power.AddonStands;
+import com.zeml.ripplez_diu.network.PacketsAddonRegister;
+
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
