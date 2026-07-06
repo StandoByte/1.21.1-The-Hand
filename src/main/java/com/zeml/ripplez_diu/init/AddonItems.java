@@ -14,12 +14,12 @@ import static com.github.standobyte.jojo.init.ModItems.MAIN_TAB;
 public final class AddonItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RipplesAddon.MOD_ID);
 
-	public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerItem("example_item", Item::new, new Item.Properties());
+	//public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerItem("example_item", Item::new, new Item.Properties());
 
     @SubscribeEvent
     public static void addToTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == MAIN_TAB.getKey()) {
-            event.accept(EXAMPLE_ITEM);
+            //event.accept(EXAMPLE_ITEM);
         }
     }
 }
