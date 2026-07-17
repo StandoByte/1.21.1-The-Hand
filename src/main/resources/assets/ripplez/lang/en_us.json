@@ -19,6 +19,12 @@
   "jojo_ripples.skill.erase_items.desc": "Erase the items you are selecting in your inventory",
   "jojo_ripples.skill.erase_items.controls": "C on item in the inventory",
 
+  "item.ripplez.music_disc_aleluya": "Holy Music Disc",
+
+  "jukebox_song.ripplez.aleluya": "Händel Messiah - Hallelujah Chorus",
+
+  "ripplez.subtitle.aleluya": "Hallelujah Chorus",
+  
   "death.attack.ripplez_erase": "%s has been erased",
   "death.attack.ripplez_erase.player": "%s has been erased by %s",
   "death.attack.ripplez_erase.entity": "%s has been erased by %s",

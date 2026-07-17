@@ -1,0 +1,42 @@
+{
+  "stand_summon": {
+    "replace": true,
+    "sounds": [
+      "ripplez_ws:stand/whitesnake_summon"
+    ]
+  },
+  "stand_unsummon": {
+    "replace": true,
+    "sounds": [ "ripplez_ws:stand/whitesnake_unsummon" ]
+  },
+  "stand_punch_light": {
+    "replace": true,
+    "sounds": [
+      "ripplez_ws:stand/whitesnake_punch"
+    ]
+  },
+  "stand_punch_barrage": {
+    "replace": true,
+    "sounds": [
+      "ripplez_ws:stand/whitesnake_punch"
+    ]
+  },
+  "stand_punch_heavy": {
+    "replace": true,
+    "sounds": [
+      "ripplez_ws:stand/whitesnake_punch_heavy"
+    ]
+  },
+  "stand_punch_heavy_charged": {
+    "replace": true,
+    "sounds": [
+      "ripplez_ws:stand/whitesnake_punch_heavy"
+    ]
+  },
+  "stand_barrage_cry": {
+    "replace": true,
+    "sounds": [
+      "ripplez_ws:stand/whitesnake_ushia"
+    ]
+  }
+}
