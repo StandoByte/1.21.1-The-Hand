@@ -7,6 +7,7 @@ import com.github.standobyte.jojo.init.power.ModStandAbilities;
 import com.github.standobyte.jojo.powersystem.ability.Ability;
 import com.github.standobyte.jojo.powersystem.ability.AbilityType;
 
+import com.zeml.ripplez.jojoimp.stands.white_snake.*;
 import com.zeml.ripplez.jojoimp.stands.white_snake.effect.DiscOutEffect;
 import com.zeml.ripplez.jojoimp.stands.white_snake.effect.MemorylessEffect;
 import com.zeml.ripplez.jojoimp.stands.white_snake.effect.MusicDisckedEffect;
@@ -33,7 +34,18 @@ public final class AddonStandAbilities {
 
 	//White Snake
 
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> PUT_DISC = ABILITY_TYPES.register(
+			"put_disc", key -> new AbilityType<>(key, HeavyPutDiscAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> THROW_DISC = ABILITY_TYPES.register(
+			"throw_disc", key -> new AbilityType<>(key, ThrowDiscAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> DISCFY = ABILITY_TYPES.register(
+			"discfy", key -> new AbilityType<>(key, DiscFyAbility::new));
 
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> TAKE_OUT_STAND = ABILITY_TYPES.register(
+			"take_stand", key -> new AbilityType<>(key, TakeOutStandDiscAbility::new));
+
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> TAKE_OUT_MEMORY = ABILITY_TYPES.register(
+			"take_memory", key -> new AbilityType<>(key, TakeOutMemoryAbility::new));
 	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<MusicDisckedEffect>> MUSIC_DISC_EFFECT = ModStandAbilities.STAND_EFFECT_TYPES.register(
 			"music_disc", key -> new EntityCustomEffectType<>(key, MusicDisckedEffect::new));
 

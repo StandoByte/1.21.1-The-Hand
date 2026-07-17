@@ -2,9 +2,9 @@ package com.zeml.ripplez.jojoimp.stands.white_snake.effect;
 
 import com.github.standobyte.jojo.entityattachment.custom_effect.EntityCustomEffectType;
 import com.github.standobyte.jojo.powersystem.standpower.effect.StandEffectInstance;
-import com.zeml.ripplez_ws.core.server.DiscOutDataPacket;
-import com.zeml.ripplez_ws.init.AddonDataAttachmentTypes;
-import com.zeml.ripplez_ws.jojoimpl.stands.ws.data.DiscOutData;
+import com.zeml.ripplez.core.packets.server.DiscOutDataPacket;
+import com.zeml.ripplez.init.AddonDataAttachmentTypes;
+import com.zeml.ripplez.jojoimp.stands.white_snake.data.DiscOutData;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

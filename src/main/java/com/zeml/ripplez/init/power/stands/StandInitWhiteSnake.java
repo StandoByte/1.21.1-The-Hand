@@ -8,6 +8,7 @@ import com.github.standobyte.jojo.powersystem.entityaction.ActionPhase;
 import com.github.standobyte.jojo.powersystem.standpower.StandStats;
 import com.github.standobyte.jojo.powersystem.standpower.StandUnlockableSkill;
 import com.github.standobyte.jojo.powersystem.standpower.entity.EntityStandType;
+import com.zeml.ripplez.init.power.AddonStandAbilities;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -36,10 +37,10 @@ public class StandInitWhiteSnake {
                             punch.setDefaultPhaseLength(ActionPhase.WINDUP, 5);
                         })
                         .addAbility("heavy_punch", ModStandAbilities.HEAVY_PUNCH)
-                        //.addAbility("put_disc",AddonStandAbilities.PUT_DISC)
-                        //.addAbility("take_memory",AddonStandAbilities.TAKE_OUT_MEMORY, take -> take.isSubAbility = true)
-                        //.addAbility("discfy",AddonStandAbilities.DISCFY)
-                        //.addAbility("take_stand",AddonStandAbilities.TAKE_OUT_STAND, take -> take.isSubAbility=true)
+                        .addAbility("put_disc", AddonStandAbilities.PUT_DISC)
+                        .addAbility("take_memory",AddonStandAbilities.TAKE_OUT_MEMORY, take -> take.isSubAbility = true)
+                        .addAbility("discfy",AddonStandAbilities.DISCFY)
+                        .addAbility("take_stand",AddonStandAbilities.TAKE_OUT_STAND, take -> take.isSubAbility=true)
 
                         .addAbility("barrage", ModStandAbilities.BARRAGE)
 
@@ -57,7 +58,7 @@ public class StandInitWhiteSnake {
                         .finalizeControlScheme()
 
 
-                        //.addAbility("throw_disc", AddonStandAbilities.THROW_DISC)
+                        .addAbility("throw_disc", AddonStandAbilities.THROW_DISC)
                         .inHotbar(0, InputMethod.CLICK)
 
                         .addSkill(StandUnlockableSkill.startingAbility("punch"))
