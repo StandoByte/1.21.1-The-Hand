@@ -73,6 +73,6 @@ public class StandInitWhiteSnake {
                         .addSkill(StandUnlockableSkill.unlockableAbility("fake_snake",200).prerequisiteSkill("melt_ur_heart"))
                         .addSkill(StandUnlockableSkill.unlockableAbility("disguise",100).prerequisiteSkill("melt_ur_heart"))
 
-                , id);
+                , id).discTooltipWIP();
     }
 }

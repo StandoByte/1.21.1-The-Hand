@@ -10,11 +10,17 @@ import com.zeml.ripplez.init.power.stands.StandInitZaHando;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import static com.github.standobyte.jojo.init.power.ModStands.PLAYER_CAN_GET_FROM_ARROW;
+
 public class AddonStands {
 	public static final DeferredRegister<StandType> STANDS = DeferredRegister.create(JojoRegistries.DEFAULT_STANDS_REG, RipplesAddon.MOD_ID);
 	
 	public static final DeferredHolder<StandType, EntityStandType> ZA_HANDO = STANDS.register("za_hando", StandInitZaHando::create);
 	public static final DeferredHolder<StandType, EntityStandType> WHITE_SNAKE = STANDS.register("white_snake", StandInitWhiteSnake::create);
 
+	static {
+		PLAYER_CAN_GET_FROM_ARROW.add(ZA_HANDO);
+
+	}
 
 }
